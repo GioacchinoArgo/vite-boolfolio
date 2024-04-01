@@ -36,7 +36,6 @@ export default {
             <p>{{ abstract }}</p>
         </div>
         <div class="card-footer d-flex justify-content-between">
-            <address>By: {{ project.id }}</address>
             <small>Pubblicato il {{ pubblicationDate }}</small>
         </div>
     </div>
