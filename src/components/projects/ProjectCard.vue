@@ -34,11 +34,20 @@ export default {
             <RouterLink v-if="!isDetail" class="btn btn-sm btn-primary"
                 :to="{ name: 'project-detail', params: { slug: project.slug } }">Vedi
             </RouterLink>
+            <RouterLink v-else="showHomeLink" class="btn btn-sm btn-primary" :to="{ name: 'home' }">Home</RouterLink>
         </div>
         <div class="card-body">
+            <span v-if="project.type" class="badge mb-2" :style="{ backgroundColor: project.type.color }">{{
+                project.type.label }}</span>
             <p>{{ isDetail ? project.content : abstract }}</p>
+
+            <div v-if="project.technologies.length" class="d-flex justify-content-end">
+                <span v-for="technology in project.technologies" :key="technology.id" class="badge rounded-pill me-2"
+                    :class="`text-bg-${technology.color}`"> {{ technology.label }}
+                </span>
+            </div>
         </div>
-        <div class="card-footer d-flex justify-content-between">
+        <div class="card-footer d-flex justify-content-end">
             <small>Pubblicato il {{ pubblicationDate }}</small>
         </div>
     </div>
